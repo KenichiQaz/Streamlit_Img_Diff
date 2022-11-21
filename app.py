@@ -48,13 +48,12 @@ def img_comparison():
             cv2.drawContours(mask, [c], 0, (255,255,255), -1)
             cv2.drawContours(filled_after, [c], 0, (0,255,0), -1)
 
-    cv2.imshow('before', before)
-    cv2.imshow('after', after)
-    cv2.imshow('diff', diff)
-    cv2.imshow('diff_box', diff_box)
-    cv2.imshow('mask', mask)
-    cv2.imshow('filled after', filled_after)
-    cv2.waitKey()
+    st.image(before, caption='before')
+    st.image(after, caption='after')
+    st.image(diff, caption='diff')
+    st.image(diff_box, caption='diff_box')
+    st.image(mask, caption='mask')
+    st.image(filled_after, caption='filled after')
 
 if st.button('Compare files'):
     st.write('comparing files')
