@@ -2,13 +2,16 @@ import streamlit as st
 from streamlit_image_comparison import image_comparison
 import cv2
 import numpy as np
+from PIL import Image
 
 if 'key' not in st.session_state:
     st.session_state['key'] = 'value'
 
 def show_images(images):
-    image1 = cv2.cvtColor(cv2.imdecode(np.frombuffer(images[0].read(), np.uint8), 1) , cv2.COLOR_BGR2RGB)
-    image2 = cv2.cvtColor(cv2.imdecode(np.frombuffer(images[1].read(), np.uint8), 1) , cv2.COLOR_BGR2RGB)
+    first = Image.open(images[0])
+    second = Image.open(images[0])
+    image1 = cv2.cvtColor(cv2.imdecode(np.frombuffer(first.read(), np.uint8), 1) , cv2.COLOR_BGR2RGB)
+    image2 = cv2.cvtColor(cv2.imdecode(np.frombuffer(second.read(), np.uint8), 1) , cv2.COLOR_BGR2RGB)
     image_comparison(
         img1=image1,
         img2=image2,
