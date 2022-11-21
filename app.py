@@ -56,7 +56,7 @@ def img_comparison(before, after):
             cv2.drawContours(mask, [c], 0, (255,255,255), -1)
             cv2.drawContours(filled_after, [c], 0, (0,255,0), -1)
     
-    col1,  col2 = st.beta_columns([1,1])
+    col1,  col2 = st.columns([1,1])
     with col1:
         st.image(before, caption='before')
     with col2:
