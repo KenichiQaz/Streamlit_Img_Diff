@@ -6,8 +6,6 @@ import numpy as np
 if 'key' not in st.session_state:
     st.session_state['key'] = 'value'
 
-images = []
-
 def show_images(images):
     image1 = cv2.cvtColor(cv2.imdecode(np.frombuffer(images[0].read(), np.uint8), 1) , cv2.COLOR_BGR2RGB)
     image2 = cv2.cvtColor(cv2.imdecode(np.frombuffer(images[1].read(), np.uint8), 1) , cv2.COLOR_BGR2RGB)
