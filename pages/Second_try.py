@@ -1,5 +1,4 @@
 import streamlit as st
-import cv2
 from streamlit_image_comparison import image_comparison
 
 st.header("J. Webb Space Telescope vs Hubble Telescope")
