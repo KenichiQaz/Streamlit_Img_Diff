@@ -9,9 +9,11 @@ if 'key' not in st.session_state:
 images = []
 
 def show_images(images):
+    image1 = cv2.cvtColor(cv2.imdecode(np.frombuffer(images[0].read(), np.uint8), 1) , cv2.COLOR_BGR2RGB)
+    image2 = cv2.cvtColor(cv2.imdecode(np.frombuffer(images[1].read(), np.uint8), 1) , cv2.COLOR_BGR2RGB)
     image_comparison(
-        img1=cv2.cvtColor(cv2.imdecode(np.frombuffer(images[0].read(), np.uint8), 1) , cv2.COLOR_BGR2RGB),
-        img2=cv2.cvtColor(cv2.imdecode(np.frombuffer(images[1].read(), np.uint8), 1) , cv2.COLOR_BGR2RGB),
+        img1=image1,
+        img2=image2,
         label1="Image 1",
         label2="Image 2",
     )
