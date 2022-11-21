@@ -28,7 +28,7 @@ def img_comparison(before, after):
         # so we must convert the array to 8-bit unsigned integers in the range
         # [0,255] before we can use it with OpenCV
     diff = (diff * 255).astype("uint8")
-    diff_box = cv2.merge([diff, diff, diff])
+    #diff_box = cv2.merge([diff, diff, diff])
 
         # Threshold the difference image, followed by finding contours to
         # obtain the regions of the two input images that differ
@@ -42,12 +42,13 @@ def img_comparison(before, after):
         area = cv2.contourArea(c)
         if area > 40:
             x,y,w,h = cv2.boundingRect(c)
-            cv2.rectangle(before, (x, y), (x + w, y + h), (36,255,12), 2)
-            cv2.rectangle(after, (x, y), (x + w, y + h), (36,255,12), 2)
-            cv2.rectangle(diff_box, (x, y), (x + w, y + h), (36,255,12), 2)
+            #cv2.rectangle(before, (x, y), (x + w, y + h), (36,255,12), 2)
+            #cv2.rectangle(after, (x, y), (x + w, y + h), (36,255,12), 2)
+            #cv2.rectangle(diff_box, (x, y), (x + w, y + h), (36,255,12), 2)
             cv2.drawContours(mask, [c], 0, (255,255,255), -1)
             cv2.drawContours(filled_after, [c], 0, (0,255,0), -1)
     
+
     col1,  col2 = st.columns([1,1])
     with col1:
         st.image(before, caption='First Image')
