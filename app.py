@@ -22,7 +22,8 @@ key2 = 0
 def img_comparison(before, after):
     if before.shape != after.shape:
         st.write("The files don't have the same dimentions. Resizing the second image to match the first.")
-        after = cv2.resize(after,before.shape[0],before.shape[1])
+        dim = (before.shape[0],before.shape[1])
+        after = cv2.resize(after,dim)
         # Convert images to grayscale
     before_gray = cv2.cvtColor(before, cv2.COLOR_BGR2GRAY)
     after_gray = cv2.cvtColor(after, cv2.COLOR_BGR2GRAY)
