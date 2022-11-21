@@ -1,0 +1,5 @@
+pipreqs
+streamlit
+opencv-python
+numpy
+scikit-image
