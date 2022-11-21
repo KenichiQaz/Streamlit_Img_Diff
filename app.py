@@ -58,9 +58,9 @@ def img_comparison(before, after):
     
     col1,  col2 = st.columns([1,1])
     with col1:
-        st.image(before, caption='before')
+        st.image(before, caption='First Image')
     with col2:
-        st.image(after, caption='after')
+        st.image(after, caption='Second Image')
     
     st.image(filled_after, caption='Colored Difference')
 
