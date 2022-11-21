@@ -1,13 +1,22 @@
 import streamlit as st
 from streamlit_image_comparison import image_comparison
+import cv2
 
 if 'key' not in st.session_state:
     st.session_state['key'] = 'value'
+imglist = []
+def load_images(images):
+    i = 0
+    for image in images:
+        image[i] = cv2.cvtColor(cv2.imdecode(np.frombuffer(image.read(), np.uint8), 1) , cv2.COLOR_BGR2RGB)
+        i += 1
+    return image
 
 def show_images(images):
+    imglist = load_images(images)
     image_comparison(
-        img1=images[0],
-        img2=images[1],
+        img1=imglist[0],
+        img2=imglist[1],
         label1="Image 1",
         label2="Image 2",
     )
