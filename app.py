@@ -58,5 +58,6 @@ if st.button('Compare files'):
 else:
     st.write('No files compared')
 
-if st.button('Restart program'):
+if st.button('Restart program') and 'key' in st.session_state.keys():
+    st.session_state.pop('key')
     st.experimental_rerun()
