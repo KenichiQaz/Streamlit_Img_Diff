@@ -1,9 +1,6 @@
 import streamlit as st
-from streamlit_image_comparison import image_comparison
 import cv2
-
-#pip install streamlit-cropper
-#pip install streamlit-webrtc
+from streamlit_image_comparison import image_comparison
 
 st.header("J. Webb Space Telescope vs Hubble Telescope")
 
