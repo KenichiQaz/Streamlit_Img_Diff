@@ -13,7 +13,7 @@ if first_image is not None:
 if second_image is not None:
     after = cv2.imdecode(np.frombuffer(second_image.read(), np.uint8), 1)
 
-def img_comparison():
+def img_comparison(before, after):
     # Convert images to grayscale
     before_gray = cv2.cvtColor(before, cv2.COLOR_BGR2GRAY)
     after_gray = cv2.cvtColor(after, cv2.COLOR_BGR2GRAY)
@@ -50,13 +50,10 @@ def img_comparison():
 
     st.image(before, caption='before')
     st.image(after, caption='after')
-    st.image(diff, caption='diff')
-    st.image(diff_box, caption='diff_box')
-    st.image(mask, caption='mask')
-    st.image(filled_after, caption='filled after')
+    st.image(filled_after, caption='Colored Difference')
 
 if st.button('Compare files'):
     st.write('comparing files')
-    img_comparison()
+    img_comparison(before, after)
 else:
     st.write('No files compared')
