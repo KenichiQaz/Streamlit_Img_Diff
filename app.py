@@ -11,7 +11,7 @@ if first_image is not None:
     before = cv2.imdecode(np.frombuffer(first_image.read(), np.uint8), 1)
 #    before = cv2.imread(first_image)
 if second_image is not None:
-    after = cv2.imread(second_image)
+    after = cv2.imdecode(np.frombuffer(second_image.read(), np.uint8), 1)
 
 if before and after is not None:
     # Convert images to grayscale
