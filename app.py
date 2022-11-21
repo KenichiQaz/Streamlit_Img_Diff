@@ -3,22 +3,11 @@ from skimage.metrics import structural_similarity
 import cv2
 import numpy as np
 
-key1 = 1
-key2 = 2
+with st.form("my-form", clear_on_submit=True):
+    first_image = st.file_uploader("Choose the first file", ['png', 'jpg'], key=1)
+    second_image = st.file_uploader("Choose the second file", ['png', 'jpg'], key=2)
+    submitted = st.form_submit_button("UPLOAD!")
 
-first_image = st.file_uploader("Choose the first file", ['png', 'jpg'], key=key1)
-second_image = st.file_uploader("Choose the second file", ['png', 'jpg'], key=key2)
-
-# Load images
-if first_image is not None:
-    before = cv2.cvtColor(cv2.imdecode(np.frombuffer(first_image.read(), np.uint8), 1) , cv2.COLOR_BGR2RGB)
-#    before = cv2.imread(first_image)
-if second_image is not None:
-    after = cv2.cvtColor(cv2.imdecode(np.frombuffer(second_image.read(), np.uint8), 1) , cv2.COLOR_BGR2RGB)
-
-key1 = 0
-key2 = 0
-    
 def img_comparison(before, after):
     if before.shape != after.shape:
         st.write("The files don't have the same dimentions. Resizing the second image to match the first.")
@@ -64,11 +53,11 @@ def img_comparison(before, after):
     
     st.image(filled_after, caption='Colored Difference')
 
-if st.button('Compare files'):
+if first_image and second_image and submitted is not None:
+    before = cv2.cvtColor(cv2.imdecode(np.frombuffer(first_image.read(), np.uint8), 1) , cv2.COLOR_BGR2RGB)
+    after = cv2.cvtColor(cv2.imdecode(np.frombuffer(second_image.read(), np.uint8), 1) , cv2.COLOR_BGR2RGB)
     st.write('Comparing files')
     img_comparison(before, after)
-else:
-    st.write('No files compared')
 
 if st.button('Restart program'):
     st.experimental_rerun()
