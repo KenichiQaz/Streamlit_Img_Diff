@@ -3,12 +3,13 @@ from skimage.metrics import structural_similarity
 import cv2
 import numpy as np
 
-first_image = st.file_uploader("Choose two files", ['png', 'jpg'], accept_multiple_files=True, key=1)
-second_image = st.file_uploader("Choose two files", ['png', 'jpg'], key=2)
+first_image = st.file_uploader("Choose the first file", ['png', 'jpg'], key=1)
+second_image = st.file_uploader("Choose the second file", ['png', 'jpg'], key=2)
 
 # Load images
 if first_image is not None:
-    before = cv2.imread(first_image)
+    before = cv2.imdecode(np.frombuffer(first_image.read(), np.uint8), 1)
+#    before = cv2.imread(first_image)
 if second_image is not None:
     after = cv2.imread(second_image)
 
