@@ -2,14 +2,12 @@ import streamlit as st
 from skimage.metrics import structural_similarity
 import cv2
 import numpy as np
-from .session_state import get_session_state
 
-state = get_session_state()
-if not state.widget_key:
-    state.widget_key = str(randint(1000, 100000000))
+key1 = 1
+key2 = 2
 
-first_image = st.file_uploader("Choose the first file", ['png', 'jpg'], key=state.widget_key+1)
-second_image = st.file_uploader("Choose the second file", ['png', 'jpg'], key=state.widget_key+2)
+first_image = st.file_uploader("Choose the first file", ['png', 'jpg'], key=key1)
+second_image = st.file_uploader("Choose the second file", ['png', 'jpg'], key=key2)
 
 # Load images
 if first_image is not None:
@@ -63,8 +61,7 @@ if st.button('Compare files'):
 else:
     st.write('No files compared')
 
-if st.button('Restart program') and 'key' in st.session_state.keys():
-    st.session_state.pop('key')
+if st.button('Restart program'):
     st.experimental_rerun()
-    state.widget_key = str(randint(1000, 100000000))
-state.sync()
+    key1 = 0
+    key2 = 0
