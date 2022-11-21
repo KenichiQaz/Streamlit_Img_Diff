@@ -48,7 +48,6 @@ def img_comparison(before, after):
             cv2.drawContours(mask, [c], 0, (255,255,255), -1)
             cv2.drawContours(filled_after, [c], 0, (0,255,0), -1)
     
-
     col1,  col2 = st.columns([1,1])
     with col1:
         st.image(before, caption='First Image')
@@ -63,7 +62,7 @@ if first_image and second_image and submitted is not None:
     st.write('Comparing files')
     img_comparison(before, after)
 
-if st.button('Restart program'):
+if st.button('Restart the program'):
     for key in st.session_state.keys():
         del st.session_state[key]
     st.experimental_rerun()
