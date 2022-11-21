@@ -3,10 +3,13 @@ from skimage.metrics import structural_similarity
 import cv2
 import numpy as np
 
+if 'key' not in st.session_state:
+    st.session_state['key'] = 'value'
+
 with st.form("my-form", clear_on_submit=True):
     first_image = st.file_uploader("Choose the first file", ['png', 'jpg'], key=1)
     second_image = st.file_uploader("Choose the second file", ['png', 'jpg'], key=2)
-    submitted = st.form_submit_button("UPLOAD!")
+    submitted = st.form_submit_button("Compare files")
 
 def img_comparison(before, after):
     if before.shape != after.shape:
@@ -60,4 +63,6 @@ if first_image and second_image and submitted is not None:
     img_comparison(before, after)
 
 if st.button('Restart program'):
+    for key in st.session_state.keys():
+        del st.session_state[key]
     st.experimental_rerun()
