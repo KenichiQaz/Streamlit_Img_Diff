@@ -11,8 +11,10 @@ def show_images(images):
     for image in images:
         imglist = []
         imglist.append(Image.open(image))
-    image1 = cv2.cvtColor(cv2.imdecode(np.frombuffer(imglist[0].read(), np.uint8), 1) , cv2.COLOR_BGR2RGB)
-    image2 = cv2.cvtColor(cv2.imdecode(np.frombuffer(imglist[1].read(), np.uint8), 1) , cv2.COLOR_BGR2RGB)
+    first = imglist[0]
+    second = imglist[1]
+    image1 = cv2.cvtColor(cv2.imdecode(np.frombuffer(first.read(), np.uint8), 1) , cv2.COLOR_BGR2RGB)
+    image2 = cv2.cvtColor(cv2.imdecode(np.frombuffer(second.read(), np.uint8), 1) , cv2.COLOR_BGR2RGB)
     image_comparison(
         img1=image1,
         img2=image2,
