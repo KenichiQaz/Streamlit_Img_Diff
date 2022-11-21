@@ -3,14 +3,18 @@ from skimage.metrics import structural_similarity
 import cv2
 import numpy as np
 
-first_file = st.file_uploader("Choose a file")
-second_file = st.file_uploader("Choose a file")
+files = st.file_uploader("Choose two files", accept_multiple_files=True)
+
+images = []
+x = 0
+for uploaded_file in files:
+    images[x] = uploaded_file.read()
 
 # Load images
-if first_file is not None:
-    before = cv2.imread(first_file)
-if second_file is not None:
-    after = cv2.imread(second_file)
+if images[0] is not None:
+    before = cv2.imread(images[0])
+if images[1] is not None:
+    after = cv2.imread(images[1])
 
 if before and after is not None:
     # Convert images to grayscale
