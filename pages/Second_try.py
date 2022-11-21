@@ -17,3 +17,5 @@ with st.form("my-form", clear_on_submit=True):
 
 if submitted is not None:
     show_images(images)
+else:
+    st.write('add files')
