@@ -16,6 +16,9 @@ if first_image is not None:
 if second_image is not None:
     after = cv2.cvtColor(cv2.imdecode(np.frombuffer(second_image.read(), np.uint8), 1) , cv2.COLOR_BGR2RGB)
 
+key1 = 0
+key2 = 0
+
 def img_comparison(before, after):
     # Convert images to grayscale
     before_gray = cv2.cvtColor(before, cv2.COLOR_BGR2GRAY)
@@ -63,5 +66,3 @@ else:
 
 if st.button('Restart program'):
     st.experimental_rerun()
-    key1 = 0
-    key2 = 0
