@@ -8,10 +8,10 @@ second_image = st.file_uploader("Choose the second file", ['png', 'jpg'], key=2)
 
 # Load images
 if first_image is not None:
-    before = cv2.imdecode(np.frombuffer(first_image.read(), np.uint8), 1)
+    before = cv2.cvtColor(cv2.imdecode(np.frombuffer(first_image.read(), np.uint8), 1) , cv2.COLOR_BGR2RGB)
 #    before = cv2.imread(first_image)
 if second_image is not None:
-    after = cv2.imdecode(np.frombuffer(second_image.read(), np.uint8), 1)
+    after = cv2.cvtColor(cv2.imdecode(np.frombuffer(second_image.read(), np.uint8), 1) , cv2.COLOR_BGR2RGB)
 
 def img_comparison(before, after):
     # Convert images to grayscale
