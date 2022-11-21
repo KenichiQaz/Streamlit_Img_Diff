@@ -18,10 +18,6 @@ if second_image is not None:
 
 key1 = 0
 key2 = 0
-
-def check_dimentions(before, after):
-    
- 
     
 def img_comparison(before, after):
     if before.shape != after.shape:
