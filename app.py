@@ -10,7 +10,6 @@ if not state.widget_key:
 
 first_image = st.file_uploader("Choose the first file", ['png', 'jpg'], key=state.widget_key+1)
 second_image = st.file_uploader("Choose the second file", ['png', 'jpg'], key=state.widget_key+2)
-state.sync()
 
 # Load images
 if first_image is not None:
@@ -67,3 +66,5 @@ else:
 if st.button('Restart program') and 'key' in st.session_state.keys():
     st.session_state.pop('key')
     st.experimental_rerun()
+    state.widget_key = str(randint(1000, 100000000))
+state.sync()
