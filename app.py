@@ -53,7 +53,10 @@ def img_comparison(before, after):
     st.image(filled_after, caption='Colored Difference')
 
 if st.button('Compare files'):
-    st.write('comparing files')
+    st.write('Comparing files')
     img_comparison(before, after)
 else:
     st.write('No files compared')
+
+if st.button('Restart program'):
+    st.experimental_rerun()
