@@ -50,13 +50,18 @@ def img_comparison(before, after):
         area = cv2.contourArea(c)
         if area > 40:
             x,y,w,h = cv2.boundingRect(c)
-            cv2.rectangle(before, (x, y), (x + w, y + h), (36,255,12), 2)
-            cv2.rectangle(after, (x, y), (x + w, y + h), (36,255,12), 2)
+            # cv2.rectangle(before, (x, y), (x + w, y + h), (36,255,12), 2)
+            # cv2.rectangle(after, (x, y), (x + w, y + h), (36,255,12), 2)
             cv2.rectangle(diff_box, (x, y), (x + w, y + h), (36,255,12), 2)
             cv2.drawContours(mask, [c], 0, (255,255,255), -1)
             cv2.drawContours(filled_after, [c], 0, (0,255,0), -1)
-    st.image(before, caption='before')
-    st.image(after, caption='after')
+    
+    col1,  col2 = st.beta_columns([1,1])
+    with col1:
+        st.image(before, caption='before')
+    with col2:
+        st.image(after, caption='after')
+    
     st.image(filled_after, caption='Colored Difference')
 
 if st.button('Compare files'):
