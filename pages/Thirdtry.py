@@ -29,6 +29,6 @@ def pdf_comparison():
 
 if files1 and files2 and submitted is not None:
     st.write('Comparing files')
-    images1 = np.asarray(bytearray(files1))
-    images2 = np.asarray(bytearray(files2))
+    images1 = bytearray(files1)
+    images2 = bytearray(files2)
     pdf_comparison()
