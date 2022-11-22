@@ -22,10 +22,10 @@ def pdf_comparison():
     img1 = images1[index]
     img2 = images2[index]
     if img1 != img2:
-        compared = compare_images(img1, img2, method='diff')
-        st.image(cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY), caption='First')
-        st.image(cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY), caption='second')
-        st.image(cv2.cvtColor(compared, cv2.COLOR_BGR2GRAY), caption='Diff comparison')
+      compared = compare_images(img1, img2, method='diff')
+      st.image(cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY), caption='First')
+      st.image(cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY), caption='second')
+      st.image(cv2.cvtColor(compared, cv2.COLOR_BGR2GRAY), caption='Diff comparison')
 
 if images1 and images2 and submitted is not None:
     st.write('Comparing files')
