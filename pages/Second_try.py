@@ -8,8 +8,8 @@ if 'key' not in st.session_state:
     st.session_state['key'] = 'value'
 
 with st.form("my-form-2", clear_on_submit=True):
-    first = st.file_uploader("Choose the first file", ['png', 'jpg','jpeg'], key=1)
-    second = st.file_uploader("Choose the second file", ['png', 'jpg','jpeg'], key=2)
+    first = st.file_uploader("Choose the first file", ['png', 'jpg','jpeg'], key=3)
+    second = st.file_uploader("Choose the second file", ['png', 'jpg','jpeg'], key=4)
     submitted = st.form_submit_button("Compare files")
 
 def show_images(images):
