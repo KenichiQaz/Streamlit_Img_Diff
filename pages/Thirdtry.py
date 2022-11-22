@@ -3,6 +3,7 @@ from skimage.util import compare_images
 import streamlit as st
 import numpy as np
 import cv2
+from pdf2image import convert_from_path, convert_from_bytes
 
 if 'key' not in st.session_state:
     st.session_state['key'] = 'value'
