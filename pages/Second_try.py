@@ -7,12 +7,7 @@ from PIL import Image
 if 'key' not in st.session_state:
     st.session_state['key'] = 'value'
 
-with st.form("my-form-2", clear_on_submit=True):
-    first = st.file_uploader("Choose the first file", ['png', 'jpg','jpeg'], key=3)
-    second = st.file_uploader("Choose the second file", ['png', 'jpg','jpeg'], key=4)
-    submitted = st.form_submit_button("Compare files")
-
-def show_images(images):
+def show_images():
     image1 = cv2.cvtColor(cv2.imdecode(np.frombuffer(first.read(), np.uint8), 1) , cv2.COLOR_BGR2RGB)
     image2 = cv2.cvtColor(cv2.imdecode(np.frombuffer(second.read(), np.uint8), 1) , cv2.COLOR_BGR2RGB)
     image_comparison(
@@ -22,12 +17,13 @@ def show_images(images):
         label2="Image 2",
     )
 
-with st.form("my-form", clear_on_submit=True):
-    images = st.file_uploader('Choose the files you want to compare', type=['png', 'jpg', 'jpeg'], accept_multiple_files=True, key=1)
+with st.form("my-form-2", clear_on_submit=True):
+    first = st.file_uploader("Choose the first file", ['png', 'jpg','jpeg'], key=3)
+    second = st.file_uploader("Choose the second file", ['png', 'jpg','jpeg'], key=4)
     submitted = st.form_submit_button("Compare files")
 
 if submitted is not None:
-    show_images(images)
+    show_images()
 else:
     st.write('add files')
 
