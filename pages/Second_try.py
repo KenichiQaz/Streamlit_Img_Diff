@@ -7,6 +7,8 @@ from PIL import Image
 if 'key' not in st.session_state:
     st.session_state['key'] = 'value'
 
+st.set_page_config(page_title="Image-Comparison", layout="centered")
+
 def show_images():
     image1 = cv2.cvtColor(cv2.imdecode(np.frombuffer(first.read(), np.uint8), 1) , cv2.COLOR_BGR2RGB)
     image2 = cv2.cvtColor(cv2.imdecode(np.frombuffer(second.read(), np.uint8), 1) , cv2.COLOR_BGR2RGB)
