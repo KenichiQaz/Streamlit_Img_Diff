@@ -1,15 +1,18 @@
 import streamlit as st
-from skimage.metrics import structural_similarity
-from streamlit_image_comparison import image_comparison
 import cv2
 import numpy as np
+from skimage.metrics import structural_similarity
+from streamlit_image_comparison import image_comparison
 
 if 'key' not in st.session_state:
     st.session_state['key'] = 'value'
 
-# set page config
 st.set_page_config(page_title="Image-Comparison Example", layout="centered")
 
+if st.button('Restart the program'):
+    for key in st.session_state.keys():
+        del st.session_state[key]
+    st.experimental_rerun()
 
 with st.form("my-form", clear_on_submit=True):
     first_image = st.file_uploader("Choose the first file", ['png', 'jpg'], key=3)
@@ -27,8 +30,3 @@ if first_image and second_image and submitted is not None:
     after = cv2.cvtColor(cv2.imdecode(np.frombuffer(second_image.read(), np.uint8), 1) , cv2.COLOR_BGR2RGB)
     st.write('Comparing files')
     img_comparison(before, after)
-
-if st.button('Restart the program'):
-    for key in st.session_state.keys():
-        del st.session_state[key]
-    st.experimental_rerun()
