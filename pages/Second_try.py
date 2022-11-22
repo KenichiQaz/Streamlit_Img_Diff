@@ -7,7 +7,7 @@ from PIL import Image
 if 'key' not in st.session_state:
     st.session_state['key'] = 'value'
 
-with st.form("my-form", clear_on_submit=True):
+with st.form("my-form-2", clear_on_submit=True):
     first = st.file_uploader("Choose the first file", ['png', 'jpg','jpeg'], key=1)
     second = st.file_uploader("Choose the second file", ['png', 'jpg','jpeg'], key=2)
     submitted = st.form_submit_button("Compare files")
