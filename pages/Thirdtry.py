@@ -29,6 +29,6 @@ def pdf_comparison():
         st.image(cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY), caption='second')
         st.image(cv2.cvtColor(compared, cv2.COLOR_BGR2GRAY), caption='Diff comparison')
 
-if images1 and images2 and submitted is not None:
+if files1 and files2 and submitted is not None:
     st.write('Comparing files')
     pdf_comparison()
