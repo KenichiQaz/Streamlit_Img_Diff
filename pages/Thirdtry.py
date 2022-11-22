@@ -29,6 +29,6 @@ def pdf_comparison():
 
 if files1 and files2 and submitted is not None:
     st.write('Comparing files')
-    images1 = files1
-    images2 = files2
+    images1 = np.frombuffer(files1.read(), np.uint8), 1)
+    images2 = np.frombuffer(files2.read(), np.uint8), 1)
     pdf_comparison()
