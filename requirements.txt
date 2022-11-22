@@ -4,3 +4,4 @@ opencv-python-headless
 numpy
 scikit-image
 streamlit-image-comparison
+pdf2image
