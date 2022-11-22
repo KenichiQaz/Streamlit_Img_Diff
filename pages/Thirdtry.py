@@ -19,8 +19,6 @@ with st.form("my-form3", clear_on_submit=True):
     submitted = st.form_submit_button("Compare files")
     
 def pdf_comparison():
-    images1 = convert_from_bytes(files1,fmt="png")
-    images2 = convert_from_bytes(files2,fmt="png")
     for index, image in enumerate(images1):
         img1 = images1[index]
         img2 = images2[index]
@@ -31,4 +29,6 @@ def pdf_comparison():
 
 if files1 and files2 and submitted is not None:
     st.write('Comparing files')
+    images1 = convert_from_bytes(files1,fmt="png")
+    images2 = convert_from_bytes(files2,fmt="png")
     pdf_comparison()
