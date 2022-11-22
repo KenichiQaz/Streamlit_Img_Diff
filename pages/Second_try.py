@@ -1,7 +1,6 @@
 import streamlit as st
 import cv2
 import numpy as np
-from skimage.metrics import structural_similarity
 from streamlit_image_comparison import image_comparison
 
 if 'key' not in st.session_state:
