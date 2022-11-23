@@ -30,7 +30,7 @@ def pdf_comparison():
 
 if files1 and files2 and submitted is not None:
     st.write('Comparing files')
-    images1 = cv2.imdecode(np.frombuffer(files1.read(), np.uint8), 1)
+    images1 = files1.read()
     images2 = cv2.imdecode(np.frombuffer(files2.read(), np.uint8), 1)
     st.write(images1)
     pdf_comparison()
