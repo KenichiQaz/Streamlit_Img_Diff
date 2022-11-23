@@ -34,26 +34,21 @@ def pdf_comparison():
         imag1 = np.array(image)
         imag2 = np.array(images2[index])
         error, diff = mse(imag1, imag2)
-        #diff1 = change_diff_green(diff)
         if error > 0:
             mess = "On page: "+ str(index)+ " there was an difference of "+ "{:.1f}".format(error)+"%"
             st.write(mess)
-            col1,  col2 = st.columns([1,1])
-            with col1:
-                image_comparison(
+            image_comparison(
                 img1=imag1,
                 img2=imag2,
-                label1="First",
-                label2="Second",
+                label1="First document",
+                label2="Second document",
             )
-            with col2:
-                st.image(diff, caption='Diff comparison')
+            st.image(diff, caption='Differance comparison in white')
             
 
 
 
 if files1 and files2 and submitted is not None:
-    st.write('Comparing files')
     if files1.type == "application/pdf":
         images1 = pdf2image.convert_from_bytes(files1.read())
     if files2.type == "application/pdf":
