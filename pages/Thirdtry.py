@@ -22,6 +22,7 @@ def pdf_comparison():
     for index, image in enumerate(images1):
         img1 = images1[index]
         img2 = images2[index]
+        st.write(index)
         compared = compare_images(img1, img2, method='diff')
         st.image(cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY), caption='First')
         st.image(cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY), caption='second')
@@ -29,6 +30,6 @@ def pdf_comparison():
 
 if files1 and files2 and submitted is not None:
     st.write('Comparing files')
-    images1 = cv2.cvtColor(cv2.imdecode(np.frombuffer(files1.read(), np.uint8), 1) , cv2.COLOR_BGR2RGB)
-    images2 = cv2.cvtColor(cv2.imdecode(np.frombuffer(files2.read(), np.uint8), 1) , cv2.COLOR_BGR2RGB)
+    images1 = cv2.imdecode(np.frombuffer(files1.read(), np.uint8), 1)
+    images2 = cv2.imdecode(np.frombuffer(files2.read(), np.uint8), 1)
     pdf_comparison()
