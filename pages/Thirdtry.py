@@ -45,7 +45,8 @@ def pdf_comparison():
         img1 = np.array(image)
         img2 = np.array(images2[index])
         error, diff = mse(img1, img2)
-        diff1 = change_diff_green(diff)
+        #diff1 = change_diff_green(diff)
+        st.write(str(diff.shape))
         if error > 0:
             mess = "On page: "+ str(index)+ " there was an difference of "+ "{:.1f}".format(error)+"%"
             st.write(mess)
