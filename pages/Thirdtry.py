@@ -38,12 +38,13 @@ def pdf_comparison():
         img2 = np.array(images2[index])
 
         error, diff = mse(img1, img2)
-        st.write(str(error))
-        
-        #compared = compare_images(img1, img2, method='diff')
-        #st.image(cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY), caption='First')
-        #st.image(cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY), caption='second')
-        st.image(diff, caption='Diff comparison')
+        if error > 0:
+            #compared = compare_images(img1, img2, method='diff')
+            #st.image(cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY), caption='First')
+            #st.image(cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY), caption='second')
+            mess = "On page: "+ str(index)+ " there was an difference of "+ str(error*100)+"%"
+            st.write(mess)
+            st.image(diff, caption='Diff comparison')
 
 
 
