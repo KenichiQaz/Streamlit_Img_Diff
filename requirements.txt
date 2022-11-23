@@ -4,4 +4,5 @@ numpy
 scikit-image
 streamlit-image-comparison
 python_poppler==0.2.2
+setuptools
 pdf2image
