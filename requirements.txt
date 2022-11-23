@@ -3,5 +3,5 @@ opencv-python-headless
 numpy
 scikit-image
 streamlit-image-comparison
-python-poppler
+python_poppler==0.2.2
 pdf2image
