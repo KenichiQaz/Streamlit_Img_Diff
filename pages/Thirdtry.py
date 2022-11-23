@@ -22,17 +22,30 @@ def convert_pdf_to_image(document, dpi):
     images = []
     images.extend(list(map(lambda image: cv2.cvtColor(np.asarray(image), code=cv2.COLOR_RGB2BGR),pdf2image.convert_from_path(document, dpi=dpi),)))
     return images
-    
+
+def mse(img1, img2):
+    h, w = img1.shape
+    diff = cv2.subtract(img1, img2)
+    err = np.sum(diff**2)
+    mse = err/(float(h*w))
+    return mse
+
 def pdf_comparison():
     for index, image in enumerate(images1):
         st.image(image, use_column_width=True, caption=str(index))
         img1 = np.array(image)
         st.image(images2[index], use_column_width=True, caption=str(index))
         img2 = np.array(images2[index])
-        compared = compare_images(img1, img2, method='diff')
+
+        error, diff = mse(img1, img2)
+        print("Image matching Error between the two images:",error)
+
+        #compared = compare_images(img1, img2, method='diff')
         st.image(cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY), caption='First')
         st.image(cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY), caption='second')
-        st.image(cv2.cvtColor(compared, cv2.COLOR_BGR2GRAY), caption='Diff comparison')
+        st.image(cv2.cvtColor(diff, cv2.COLOR_BGR2GRAY), caption='Diff comparison')
+
+
 
 if files1 and files2 and submitted is not None:
     st.write('Comparing files')
