@@ -25,7 +25,7 @@ def convert_pdf_to_image(document, dpi):
     
 def pdf_comparison():
     for index, image in enumerate(images1):
-        img1 = images1[index]
+        img1 = image
         img2 = images2[index]
         st.write(index)
         compared = compare_images(img1, img2, method='diff')
@@ -36,5 +36,5 @@ def pdf_comparison():
 if files1 and files2 and submitted is not None:
     st.write('Comparing files')
     images1 = convert_pdf_to_image(files1.read(),72)
-    images2 = cv2.imdecode(np.frombuffer(files2.read(), np.uint8), 1)
+    images2 = convert_pdf_to_image(files2.read(),72)
     pdf_comparison()
