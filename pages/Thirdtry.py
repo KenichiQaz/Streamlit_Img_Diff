@@ -32,9 +32,9 @@ def mse(img1, img2):
 
 def pdf_comparison():
     for index, image in enumerate(images1):
-        st.image(image, use_column_width=True, caption=str(index))
+        #st.image(image, use_column_width=True, caption=str(index))
         img1 = np.array(image)
-        st.image(images2[index], use_column_width=True, caption=str(index))
+        #st.image(images2[index], use_column_width=True, caption=str(index))
         img2 = np.array(images2[index])
 
         diff = mse(img1, img2)
@@ -42,7 +42,7 @@ def pdf_comparison():
         #compared = compare_images(img1, img2, method='diff')
         st.image(cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY), caption='First')
         st.image(cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY), caption='second')
-        st.image(cv2.cvtColor(diff, cv2.COLOR_BGR2GRAY), caption='Diff comparison')
+        st.image(diff, caption='Diff comparison')
 
 
 
