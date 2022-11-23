@@ -2,6 +2,7 @@ import streamlit as st
 import numpy as np
 import cv2
 import pdf2image
+from streamlit_image_comparison import image_comparison
 from PIL import Image
 
 if 'key' not in st.session_state:
@@ -42,20 +43,26 @@ def change_diff_green(diff):
 
 def pdf_comparison():
     for index, image in enumerate(images1):
-        img1 = np.array(image)
-        img2 = np.array(images2[index])
-        error, diff = mse(img1, img2)
+        imag1 = np.array(image)
+        imag2 = np.array(images2[index])
+        error, diff = mse(imag1, imag2)
         #diff1 = change_diff_green(diff)
         if error > 0:
             mess = "On page: "+ str(index)+ " there was an difference of "+ "{:.1f}".format(error)+"%"
             st.write(mess)
             col1,  col2, col3 = st.columns([1,1,4])
             with col1:
-                st.image(img1, caption='First')
+                st.image(imag1, caption='First')
             with col2:
-                st.image(img2, caption='second')
+                st.image(imag2, caption='second')
             with col3:
                 st.image(diff, caption='Diff comparison')
+            image_comparison(
+                img1=imag1,
+                img2=imag2,
+                label1="First",
+                label2="Second",
+            )
 
 
 

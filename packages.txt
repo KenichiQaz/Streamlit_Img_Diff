@@ -1,4 +1,4 @@
-libgl1-mesa-glx
+libgl1
 libpoppler-cpp-dev
 libpoppler-dev
 cmake
