@@ -38,6 +38,7 @@ def pdf_comparison():
         img2 = np.array(images2[index])
 
         diff = mse(img1, img2)
+        st.write(diff.type)
 
         #compared = compare_images(img1, img2, method='diff')
         st.image(cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY), caption='First')
