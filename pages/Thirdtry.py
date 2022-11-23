@@ -37,8 +37,7 @@ def pdf_comparison():
         st.image(images2[index], use_column_width=True, caption=str(index))
         img2 = np.array(images2[index])
 
-        error, diff = mse(img1, img2)
-        print("Image matching Error between the two images:",error)
+        diff = mse(img1, img2)
 
         #compared = compare_images(img1, img2, method='diff')
         st.image(cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY), caption='First')
