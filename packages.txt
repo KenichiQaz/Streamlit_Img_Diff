@@ -1,3 +1,6 @@
 libgl1-mesa-glx
+libpoppler-cpp-dev
+libpoppler-dev
 cmake
+python3-pkgconfig
 poppler-utils
