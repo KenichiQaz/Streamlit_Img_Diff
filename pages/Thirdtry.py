@@ -24,11 +24,11 @@ def convert_pdf_to_image(document, dpi):
     return images
 
 def mse(img1, img2):
-    h, w, c = img1.shape
+    h, w = img1.shape
     diff = cv2.subtract(img1, img2)
     err = np.sum(diff**2)
     mse = err/(float(h*w))
-    return mse
+    return mse, diff
 
 def pdf_comparison():
     for index, image in enumerate(images1):
@@ -37,13 +37,13 @@ def pdf_comparison():
         #st.image(images2[index], use_column_width=True, caption=str(index))
         img2 = np.array(images2[index])
 
-        diff = mse(img1, img2)
-        st.write(str(diff))
-
+        error, diff = mse(img1, img2)
+        st.write(str(error))
+        
         #compared = compare_images(img1, img2, method='diff')
         #st.image(cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY), caption='First')
         #st.image(cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY), caption='second')
-        #st.image(diff, caption='Diff comparison')
+        st.image(diff, caption='Diff comparison')
 
 
 
