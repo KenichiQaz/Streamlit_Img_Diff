@@ -3,7 +3,7 @@ from skimage.util import compare_images
 import streamlit as st
 import numpy as np
 import cv2
-from pdf2image import convert_from_path, convert_from_bytes
+import pdf2image
 
 if 'key' not in st.session_state:
     st.session_state['key'] = 'value'
@@ -17,6 +17,11 @@ with st.form("my-form3", clear_on_submit=True):
     files1 = st.file_uploader("Choose the first file", ['pdf'], key=5)
     files2 = st.file_uploader("Choose the second file", ['pdf'], key=6)
     submitted = st.form_submit_button("Compare files")
+
+def convert_pdf_to_image(document, dpi):
+    images = []
+    images.extend(list(map(lambda image: cv2.cvtColor(np.asarray(image), code=cv2.COLOR_RGB2BGR),pdf2image.convert_from_path(document, dpi=dpi),)))
+    return images
     
 def pdf_comparison():
     for index, image in enumerate(images1):
@@ -30,7 +35,7 @@ def pdf_comparison():
 
 if files1 and files2 and submitted is not None:
     st.write('Comparing files')
-    images1 = files1.read()
+    images1 = convert_pdf_to_image(files1.read(),72)
     images2 = cv2.imdecode(np.frombuffer(files2.read(), np.uint8), 1)
     st.write(images1)
     pdf_comparison()
