@@ -29,8 +29,8 @@ def mse(img1, img2):
     h, w, c = img1.shape
     diff = cv2.subtract(img1, img2)
     err = np.sum(diff**2)
-    mse = err/(float(h*w))
-    return mse, diff
+    error = err/(float(h*w))
+    return error, diff
 
 def pdf_comparison():
     for index, image in enumerate(images1):
