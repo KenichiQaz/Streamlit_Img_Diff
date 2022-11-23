@@ -32,19 +32,19 @@ def mse(img1, img2):
 
 def pdf_comparison():
     for index, image in enumerate(images1):
-        #st.image(image, use_column_width=True, caption=str(index))
         img1 = np.array(image)
-        #st.image(images2[index], use_column_width=True, caption=str(index))
         img2 = np.array(images2[index])
-
         error, diff = mse(img1, img2)
         if error > 0:
-            #compared = compare_images(img1, img2, method='diff')
-            #st.image(cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY), caption='First')
-            #st.image(cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY), caption='second')
             mess = "On page: "+ str(index)+ " there was an difference of "+ "{:.1f}".format(error)+"%"
             st.write(mess)
-            st.image(diff, caption='Diff comparison')
+            col1,  col2, col3 = st.columns([1,1,1])
+            with col1:
+                st.image(img1, caption='First')
+            with col2:
+                st.image(img2, caption='second')
+            with col3:
+                st.image(diff, caption='Diff comparison')
 
 
 
