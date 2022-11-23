@@ -1,9 +1,8 @@
-import skimage
-from skimage.util import compare_images
 import streamlit as st
 import numpy as np
 import cv2
 import pdf2image
+from PIL import Image
 
 if 'key' not in st.session_state:
     st.session_state['key'] = 'value'
@@ -30,11 +29,23 @@ def mse(img1, img2):
     mse = err/(float(h*w))
     return mse, diff
 
+def change_diff_green(diff):
+    diff = diff.convert("RGB")
+    
+    d = diff.getdata()
+    
+    new_image = []
+    for item in d:
+        if item[0] in list(range(200, 256)):
+            new_image.append((0, 255, 0))
+    return diff
+
 def pdf_comparison():
     for index, image in enumerate(images1):
         img1 = np.array(image)
         img2 = np.array(images2[index])
         error, diff = mse(img1, img2)
+        diff = change_diff_green(diff)
         if error > 0:
             mess = "On page: "+ str(index)+ " there was an difference of "+ "{:.1f}".format(error)+"%"
             st.write(mess)
