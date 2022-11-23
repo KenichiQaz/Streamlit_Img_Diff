@@ -38,7 +38,7 @@ def pdf_comparison():
         if error > 0:
             mess = "On page: "+ str(index)+ " there was an difference of "+ "{:.1f}".format(error)+"%"
             st.write(mess)
-            col1,  col2, col3 = st.columns([1,1,1])
+            col1,  col2, col3 = st.columns([1,1,4])
             with col1:
                 st.image(img1, caption='First')
             with col2:
