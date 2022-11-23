@@ -3,7 +3,6 @@ import numpy as np
 import cv2
 import pdf2image
 from streamlit_image_comparison import image_comparison
-from PIL import Image
 
 if 'key' not in st.session_state:
     st.session_state['key'] = 'value'
@@ -29,17 +28,6 @@ def mse(img1, img2):
     err = np.sum(diff**2)
     mse = err/(float(h*w))
     return mse, diff
-
-def change_diff_green(diff):
-    diff = diff.convert("RGB")
-    
-    d = diff.getdata()
-    
-    new_image = []
-    for item in d:
-        if item[0] in list(range(200, 256)):
-            new_image.append((0, 255, 0))
-    return diff
 
 def pdf_comparison():
     for index, image in enumerate(images1):

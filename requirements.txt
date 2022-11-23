@@ -2,6 +2,8 @@ streamlit
 opencv-python-headless
 numpy
 scikit-image
+torch
+torchvision
 streamlit-image-comparison
 pdf2image
 python-poppler
