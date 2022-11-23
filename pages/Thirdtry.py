@@ -56,7 +56,7 @@ def pdf_comparison():
             with col2:
                 st.image(img2, caption='second')
             with col3:
-                st.image(diff1, caption='Diff comparison')
+                st.image(diff, caption='Diff comparison')
 
 
 
