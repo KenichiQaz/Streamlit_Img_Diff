@@ -1,4 +1,3 @@
-pipreqs
 streamlit
 opencv-python-headless
 numpy

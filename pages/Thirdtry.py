@@ -35,6 +35,6 @@ def pdf_comparison():
 
 if files1 and files2 and submitted is not None:
     st.write('Comparing files')
-    images1 = convert_pdf_to_image(files1.read(),72)
-    images2 = convert_pdf_to_image(files2.read(),72)
+    images1 = pdf2image.convert_from_bytes(files1.read())
+    images2 = pdf2image.convert_from_bytes(files2.read())
     pdf_comparison()
