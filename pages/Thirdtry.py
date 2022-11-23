@@ -42,7 +42,7 @@ def pdf_comparison():
             #compared = compare_images(img1, img2, method='diff')
             #st.image(cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY), caption='First')
             #st.image(cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY), caption='second')
-            mess = "On page: "+ str(index)+ " there was an difference of "+ str(error)+"%"
+            mess = "On page: "+ str(index)+ " there was an difference of "+ "{:.1f}".format(error)+"%"
             st.write(mess)
             st.image(diff, caption='Diff comparison')
 
