@@ -25,10 +25,9 @@ def convert_pdf_to_image(document, dpi):
     
 def pdf_comparison():
     for index, image in enumerate(images1):
-        st.image(image, use_column_width=True)
+        st.image(image, use_column_width=True, caption=str(index))
         img1 = image
         img2 = images2[index]
-        st.write(index)
         compared = compare_images(img1, img2, method='diff')
         st.image(cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY), caption='First')
         st.image(cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY), caption='second')
