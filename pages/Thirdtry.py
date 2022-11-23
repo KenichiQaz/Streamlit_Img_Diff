@@ -26,7 +26,7 @@ def convert_pdf_to_image(document, dpi):
 def pdf_comparison():
     for index, image in enumerate(images1):
         st.image(image, use_column_width=True, caption=str(index))
-        st.write(images1.shape)
+        st.write(image.shape)
         img1 = image
         st.image(images2[index], use_column_width=True, caption=str(index))
         st.write(images2[index].shape)
