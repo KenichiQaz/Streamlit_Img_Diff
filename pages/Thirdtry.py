@@ -25,6 +25,7 @@ def convert_pdf_to_image(document, dpi):
     
 def pdf_comparison():
     for index, image in enumerate(images1):
+        st.image(image, use_column_width=True)
         img1 = image
         img2 = images2[index]
         st.write(index)
@@ -35,6 +36,8 @@ def pdf_comparison():
 
 if files1 and files2 and submitted is not None:
     st.write('Comparing files')
-    images1 = pdf2image.convert_from_bytes(files1.read())
-    images2 = pdf2image.convert_from_bytes(files2.read())
+    if files1.type == "application/pdf":
+        images1 = pdf2image.convert_from_bytes(files1.read())
+    if files2.type == "application/pdf":
+        images2 = pdf2image.convert_from_bytes(files2.read())
     pdf_comparison()
