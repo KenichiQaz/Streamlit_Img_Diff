@@ -29,7 +29,7 @@ def pdf_comparison():
         st.write(np.array(image).shape)
         img1 = image
         st.image(images2[index], use_column_width=True, caption=str(index))
-        st.write(images2[index].shape)
+        st.write(np.array(images2[index]).shape)
         img2 = images2[index]
         compared = compare_images(img1, img2, method='diff')
         st.image(cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY), caption='First')
