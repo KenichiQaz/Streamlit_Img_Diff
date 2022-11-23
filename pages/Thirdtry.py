@@ -20,7 +20,7 @@ with st.form("my-form3", clear_on_submit=True):
 def convert_pdf_to_image(document, dpi):
     images = []
     images.extend(list(map(
-        lambda image: cv2.cvtColor(np.asarray(image), 
+        lambda image: cv2.cvtColor(np.asarray(image),
         code=cv2.COLOR_RGB2BGR),
         pdf2image.convert_from_path(document, dpi=dpi),)))
     return images
