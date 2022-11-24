@@ -22,7 +22,7 @@ with st.form("my-form3", clear_on_submit=True):
     submitted = st.form_submit_button("Compare files")
 
 def tint_green(totint):
-    green = F.adjust_hue(Image.fromarray(totint), 0.3)
+    green = F.adjust_hue(Image.fromarray(totint), hue_factor=0.3)
     return green
 
 def convert_pdf_to_image(document, dpi):
