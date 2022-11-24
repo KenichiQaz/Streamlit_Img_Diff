@@ -3,6 +3,7 @@ import numpy as np
 import cv2
 import pdf2image
 from streamlit_image_comparison import image_comparison
+from transforms import RGBTransform
 
 if 'key' not in st.session_state:
     st.session_state['key'] = 'value'
@@ -16,6 +17,10 @@ with st.form("my-form3", clear_on_submit=True):
     files1 = st.file_uploader("Choose the first file", ['pdf'], key=5)
     files2 = st.file_uploader("Choose the second file", ['pdf'], key=6)
     submitted = st.form_submit_button("Compare files")
+
+def tint_green(totint):
+    green = RGBTransform().mix_with((0, 255, 0),factor=.30).applied_to(totint)
+    return green
 
 def convert_pdf_to_image(document, dpi):
     images = []
@@ -46,10 +51,8 @@ def pdf_comparison():
                 label1="First document",
                 label2="Second document",
             )
-            st.image(diff, caption='Differance comparison in white')
+            st.image(tint_green(diff), caption='Differance comparison in white')
             
-
-
 
 if files1 and files2 and submitted is not None:
     if files1.type == "application/pdf":

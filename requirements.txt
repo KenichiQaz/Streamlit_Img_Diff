@@ -7,3 +7,4 @@ torchvision
 streamlit-image-comparison
 pdf2image
 python-poppler
+transforms
