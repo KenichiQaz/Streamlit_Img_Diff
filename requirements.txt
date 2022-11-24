@@ -8,4 +8,5 @@ streamlit-image-comparison
 pdf2image
 python-poppler
 sgmllib3k
+cgi
 transforms
