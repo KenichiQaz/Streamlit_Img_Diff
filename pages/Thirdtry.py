@@ -6,6 +6,7 @@ from streamlit_image_comparison import image_comparison
 import torch
 import torchvision
 import torchvision.transforms.functional as F
+from PIL import Image
 
 if 'key' not in st.session_state:
     st.session_state['key'] = 'value'
@@ -21,7 +22,7 @@ with st.form("my-form3", clear_on_submit=True):
     submitted = st.form_submit_button("Compare files")
 
 def tint_green(totint):
-    green = F.adjust_hue(totint, 0.3)
+    green = F.adjust_hue(Image.fromarray(totint), 0.3)
     return green
 
 def convert_pdf_to_image(document, dpi):
