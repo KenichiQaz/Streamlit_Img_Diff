@@ -17,7 +17,6 @@ with st.form('my-form3', clear_on_submit=True):
     files2 = st.file_uploader('Choose the second file', ['pdf'], key=6)
     submitted = st.form_submit_button('Compare files')
 
-
 def convert_pdf_to_image(document, dpi):
     images = []
     images.extend(list(map(lambda image: \
@@ -25,6 +24,8 @@ def convert_pdf_to_image(document, dpi):
                   code=cv2.COLOR_RGB2BGR),
                   pdf2image.convert_from_path(document, dpi=dpi))))
     return images
+
+
 
 
 def mse(img1, img2):
