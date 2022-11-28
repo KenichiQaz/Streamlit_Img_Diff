@@ -21,12 +21,9 @@ def convert_pdf_to_image(document, dpi):
     images = []
     images.extend(list(map(lambda image: \
                   cv2.cvtColor(np.asarray(image),
-                  code=cv2.COLOR_RGB2BGR),
+                  code=cv2.COLOR_GRB2RGB),
                   pdf2image.convert_from_path(document, dpi=dpi))))
     return images
-
-
-
 
 def mse(img1, img2):
     (h, w, c) = img1.shape
