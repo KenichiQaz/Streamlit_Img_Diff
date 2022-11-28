@@ -66,7 +66,7 @@ def mse(img1, img2):
     error = err / float(h * w)
     return (error, diff)
 
-def pdf_prep():
+def pdf_prep(images1,images2):
     for (index, image) in enumerate(images1):
         mess = ''
         imag1 = np.array(image)
