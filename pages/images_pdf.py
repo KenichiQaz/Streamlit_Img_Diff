@@ -76,7 +76,7 @@ def pdf_prep(images1,images2):
             mess = 'On page: ' + str(index) \
                 + ' there was an difference of ' \
                 + '{:.1f}'.format(error) + '%'
-        img_compare(imag1,imag2)
+            img_compare(imag1,imag2)
         
 
 if files1 and files2 and submitted is not None:
