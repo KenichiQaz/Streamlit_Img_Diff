@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit_image_comparison import image_comparison
 from skimage.metrics import structural_similarity
 import cv2
 import numpy as np
