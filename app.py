@@ -7,7 +7,7 @@ import numpy as np
 if 'key' not in st.session_state:
     st.session_state['key'] = 'value'
 
-with st.form("my-form", clear_on_submit=True):
+with st.form("my-form", clear_on_submit=False):
     first_image = st.file_uploader("Choose the first file", ['png', 'jpg'], key=1)
     second_image = st.file_uploader("Choose the second file", ['png', 'jpg'], key=2)
     submitted = st.form_submit_button("Compare files")
