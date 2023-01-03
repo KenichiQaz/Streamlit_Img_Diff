@@ -11,7 +11,7 @@ with st.form("my-form", clear_on_submit=True):
     second_image = st.file_uploader("Choose the second file", ['png', 'jpg'], key=2)
     submitted = st.form_submit_button("Compare files")
 
-def img_comparison(before, after):
+def img_compare(before, after):
     if before.shape != after.shape:
         st.write("The files don't have the same dimentions. Resizing the second image to match the first.")
     before_gray = cv2.cvtColor(before, cv2.COLOR_BGR2GRAY)
@@ -41,7 +41,7 @@ if first_image and second_image and submitted is not None:
     before = cv2.cvtColor(cv2.imdecode(np.frombuffer(first_image.read(), np.uint8), 1) , cv2.COLOR_BGR2RGB)
     after = cv2.cvtColor(cv2.imdecode(np.frombuffer(second_image.read(), np.uint8), 1) , cv2.COLOR_BGR2RGB)
     st.write('Comparing files')
-    img_comparison(before, after)
+    img_compare(before, after)
 
 if st.button('Restart the program'):
     for key in st.session_state.keys():
